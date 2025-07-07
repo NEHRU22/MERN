@@ -1,0 +1,11 @@
+.category-container {
+  padding: 2rem;
+}
+
+.category-card {
+  background: #fafafa;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
