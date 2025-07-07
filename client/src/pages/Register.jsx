@@ -14,7 +14,7 @@ export default function Register() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/register", {
+      const res = await fetch("https://maronadu-news-aggregator.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
