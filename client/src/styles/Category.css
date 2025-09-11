@@ -1,0 +1,28 @@
+.category-container {
+  padding: 2rem;
+  background-color: #121212; /* Deep dark background */
+  min-height: 100vh;
+}
+
+.category-card {
+  background: #1e1e1e; /* Dark gray card background */
+  padding: 1.2rem;
+  border: 1px solid #333; /* Dim border for contrast */
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow:
+    0 4px 10px rgba(0, 255, 127, 0.15),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.05);
+  color: #e0e0e0; /* Light gray text */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  background: #00ff7f10; /* Soft green transparent glow */
+  border-color: #00ff7f; /* Bright neon green border on hover */
+  box-shadow:
+    0 6px 18px rgba(0, 255, 127, 0.4),
+    inset 0 -2px 10px rgba(0, 255, 127, 0.2);
+  color: #00ff7f; /* Neon green text on hover */
+}

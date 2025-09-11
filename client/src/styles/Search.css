@@ -1,0 +1,110 @@
+.search-container {
+  padding: 2rem;
+  background: linear-gradient(to bottom right, #101214 80%, #1d0036 100%);
+  min-height: 100vh;
+  color: #e0e0e0;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.search-bar input {
+  padding: 0.8rem;
+  width: 300px;
+  border: 1px solid #24ffbe;
+  border-radius: 8px;
+  background: #181818;
+  color: #00ff7f;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-bar input:focus {
+  border-color: #ce12d1;
+  box-shadow: 0 0 8px #ce12d1aa;
+}
+
+.search-bar button {
+  padding: 0.8rem 1.2rem;
+  background-color: #00ff7f;
+  color: #151515;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00ff7f88;
+  transition: background 0.3s, color 0.3s, box-shadow 0.2s;
+}
+.search-bar button:hover {
+  background: #ce12d1;
+  color: #fff;
+  box-shadow: 0 0 16px #ce12d1cc;
+}
+
+/* Results Grid */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Search Card */
+.search-card {
+  background: linear-gradient(135deg, #202824 80%, #192433 100%);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(0,255,127,0.15), 0 0 1px #00ff7f44;
+  border: 1px solid #233629;
+  transition: transform 0.25s, box-shadow 0.25s;
+  color: #e0e0e0;
+}
+
+.search-card:hover {
+  transform: scale(1.025) translateY(-4px);
+  box-shadow: 0 10px 28px #00ff7faa, 0 0 0 2px #ce12d1;
+}
+
+.search-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.7rem;
+  background: #161616;
+}
+
+.search-card h3 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0 0.3rem 0;
+  color: #00ff7f;
+  font-weight: 700;
+}
+
+.search-card p {
+  font-size: 0.94rem;
+  margin-bottom: 0.6rem;
+  color: #c9c9c9;
+}
+
+.search-card a button {
+  background: #ce12d1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.25s;
+  box-shadow: 0 0 8px #ce12d1aa;
+}
+.search-card a button:hover {
+  background: #00ff7f;
+  color: #232323;
+  box-shadow: 0 0 14px #00ff7fcc;
+}

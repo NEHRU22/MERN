@@ -1,0 +1,92 @@
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0c000e, #000104);
+  font-family: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.login-form {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 40px 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  color: #f0e6ff;
+  font-size: 1rem;
+}
+
+.login-form h2 {
+  color: #e0c3fc;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px #d944ffaa;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  color: #fff;
+  background-color: rgba(255 255 255 / 0.15);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form input::placeholder {
+  color: #ddd;
+  opacity: 0.7;
+}
+
+.login-form input:focus {
+  background-color: rgba(255 255 255 / 0.25);
+  box-shadow: 0 0 10px #d944ffcc;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #d944ff, #6a00ff);
+  color: #eee;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 12px #d944ffdd;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form button:hover {
+  background: linear-gradient(90deg, #6a00ff, #d944ff);
+  box-shadow: 0 0 20px #d944ffee;
+}
+
+.login-form p {
+  color: #ddd;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.login-form a {
+  color: #8bc6ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.login-form a:hover {
+  color: #d944ff;
+}

@@ -1,0 +1,91 @@
+.register-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #000000, #02060a);
+  font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #d31d1d;
+}
+
+.register-form {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 40px 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  color: #dde3f0;
+}
+
+.register-form h2 {
+  color: #f1c40f;
+  margin-bottom: 25px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px #f1c40faa;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  color: #e0e0e0;
+  background-color: rgba(255 255 255 / 0.15);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-form input::placeholder {
+  color: #bbb;
+  opacity: 0.8;
+}
+
+.register-form input:focus {
+  background-color: rgba(255 255 255 / 0.3);
+  box-shadow: 0 0 10px #f1c40faa;
+  color: #fff;
+}
+
+.register-form button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #f1c40f, #f39c12);
+  color: #182848;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 14px #f1c40faa;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-form button:hover {
+  background: linear-gradient(90deg, #f39c12, #f1c40f);
+  box-shadow: 0 0 22px #f39c12cc;
+  color: #100f1f;
+}
+
+.register-form p {
+  color: #ccc;
+  margin-top: 14px;
+  font-size: 0.95rem;
+}
+
+.register-form a {
+  color: #81ecec;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.register-form a:hover {
+  color: #f1c40f;
+}
