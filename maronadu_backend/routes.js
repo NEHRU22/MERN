@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const axios = require("axios");
 const { User } = require("./models");
 
-// Use NewsAPI key from environment variable
+// Environment variables for NewsAPI key & URL
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
 const NEWS_API_URL = "https://newsapi.org/v2/top-headlines";
 
@@ -12,7 +12,7 @@ const NEWS_API_URL = "https://newsapi.org/v2/top-headlines";
 router.post("/auth/register", async (req, res) => {
   const { fullName, email, password } = req.body;
   if (!fullName || !email || !password)
-    return res.status(400).json({ message: "All fields required" });
+    return res.status(400).json({ message: "All fields are required" });
   try {
     const existing = await User.findOne({ email });
     if (existing)
@@ -22,8 +22,8 @@ router.post("/auth/register", async (req, res) => {
     await user.save();
     return res.status(201).json({ message: "Registered successfully" });
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ message: "Internal error" });
+    console.error("Registration error:", err.message);
+    return res.status(500).json({ message: "Internal server error" });
   }
 });
 
@@ -31,7 +31,7 @@ router.post("/auth/register", async (req, res) => {
 router.post("/auth/login", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password)
-    return res.status(400).json({ message: "All fields required" });
+    return res.status(400).json({ message: "All fields are required" });
   try {
     const user = await User.findOne({ email }).select("+password");
     if (!user) return res.status(400).json({ message: "User not found" });
@@ -42,8 +42,8 @@ router.post("/auth/login", async (req, res) => {
       user: { fullName: user.fullName, email: user.email },
     });
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ message: "Internal error" });
+    console.error("Login error:", err.message);
+    return res.status(500).json({ message: "Internal server error" });
   }
 });
 
@@ -59,9 +59,9 @@ router.get("/realtime-news", async (req, res) => {
     const response = await axios.get(NEWS_API_URL, {
       params: {
         category: category.toLowerCase(),
-        country: "us",  // optional: use your preferred country code
+        country: "us",
         apiKey: NEWS_API_KEY,
-        pageSize: 20    // optional: number of articles to fetch
+        pageSize: 20,
       },
     });
     return res.json(response.data);
