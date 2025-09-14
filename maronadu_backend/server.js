@@ -3,14 +3,14 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const axios = require("axios");
-const router = require("express").Router();
+
 const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
 
-// CORS setup using frontend URL from environment variables or localhost fallback
+// CORS using front-end URL from environment variable, fallback to localhost for local dev
 const frontendURL = process.env.FRONTEND_URL || "http://localhost:5173";
 app.use(
   cors({
@@ -19,25 +19,34 @@ app.use(
   })
 );
 
-// MongoDB connection
-const mongoURI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/maronaduDB";
+// MongoDB Atlas connection
+const mongoURI = process.env.MONGODB_URI;
+if (!mongoURI) {
+  console.error("❌ MONGODB_URI not set in environment variables");
+  process.exit(1);
+}
+
 mongoose
   .connect(mongoURI)
   .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB error:", err));
+  .catch((err) => {
+    console.error("❌ MongoDB error:", err.message);
+    process.exit(1);
+  });
 
-// User model (example)
+// User Schema/Model (simple)
 const { Schema, model } = mongoose;
-
 const userSchema = new Schema({
   fullName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true, select: false },
 });
-
 const User = model("User", userSchema);
 
-// Register route
+// Create router for all API routes
+const router = require("express").Router();
+
+// Register Route
 router.post("/auth/register", async (req, res) => {
   const { fullName, email, password } = req.body;
   if (!fullName || !email || !password)
@@ -51,12 +60,12 @@ router.post("/auth/register", async (req, res) => {
     await user.save();
     return res.status(201).json({ message: "Registered successfully" });
   } catch (err) {
-    console.error(err);
+    console.error("Registration error:", err.message);
     return res.status(500).json({ message: "Internal error" });
   }
 });
 
-// Login route
+// Login Route
 router.post("/auth/login", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password)
@@ -71,15 +80,14 @@ router.post("/auth/login", async (req, res) => {
       user: { fullName: user.fullName, email: user.email },
     });
   } catch (err) {
-    console.error(err);
+    console.error("Login error:", err.message);
     return res.status(500).json({ message: "Internal error" });
   }
 });
 
-// News fetching route
+// Live News Route (NewsAPI)
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
 const NEWS_API_URL = "https://newsapi.org/v2/top-headlines";
-
 router.get("/realtime-news", async (req, res) => {
   const { category } = req.query;
   if (!NEWS_API_KEY)
@@ -102,10 +110,10 @@ router.get("/realtime-news", async (req, res) => {
   }
 });
 
-// Use all routes under /api
+// Use router for API
 app.use("/api", router);
 
-// Health check route
+// Health check
 app.get("/", (req, res) => {
   res.send("✅ Backend is running");
 });
