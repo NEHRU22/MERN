@@ -14,7 +14,7 @@ export default function Search() {
       return;
     }
     try {
-      const res = await fetch(`https://maronadu-backend.onrender.com/api/search?query=${query}`);
+      const res = await fetch(`https://https://mern-backend-pf4m.onrender.com//api/search?query=${query}`);
       if (!res.ok) {
         const errData = await res.json();
         setMessage(errData.message || "Search failed");
