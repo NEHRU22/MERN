@@ -20,7 +20,7 @@ app.use(
 );
 
 // MongoDB Atlas connection
-const mongoURI = process.env.MONGODB_URI;
+const mongoURI = process.env.atlas_url;
 if (!mongoURI) {
   console.error("❌ MONGODB_URI not set in environment variables");
   process.exit(1);
