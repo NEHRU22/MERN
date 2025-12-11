@@ -15,7 +15,7 @@ export default function Register() {
 
     try {
       // Change to your local backend URL when running locally
-      const res = await fetch("https://maronadu-backend.onrender.com/api/auth/register"
+      const res = await fetch("https://https://mern-backend-pf4m.onrender.com//api/auth/register"
 , {
         method: "POST",
         headers: {
