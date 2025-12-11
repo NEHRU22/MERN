@@ -13,7 +13,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://maronadu-backend.onrender.com/api/auth/login", {
+      const res = await fetch("https://https://mern-backend-pf4m.onrender.com//api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
