@@ -19,15 +19,19 @@ app.use(
   })
 );
 
-// MongoDB Atlas connection
-const mongoURI = process.env.atlas_url;
+// MongoDB connection - FIXED: Proper URI format for local (matches Compass)
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/maronaduDB';
+
 if (!mongoURI) {
   console.error("❌ MONGODB_URI not set in environment variables");
   process.exit(1);
 }
 
 mongoose
-  .connect(mongoURI)
+  .connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => {
     console.error("❌ MongoDB error:", err.message);
@@ -44,7 +48,7 @@ const userSchema = new Schema({
 const User = model("User", userSchema);
 
 // Create router for all API routes
-const router = require("express").Router();
+const router = express.Router();  // FIXED: Use express.Router()
 
 // Register Route
 router.post("/auth/register", async (req, res) => {
