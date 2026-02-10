@@ -13,7 +13,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://https://mern-backend-pf4m.onrender.com//api/auth/login", {
+      const res = await fetch('/api/auth/login', {  // FIXED: Local proxy!
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -24,7 +24,7 @@ export default function Login() {
       if (res.ok) {
         alert("✅ Login successful");
         localStorage.setItem("user", JSON.stringify(data.user));
-        navigate("/");
+        navigate("/");  // Or dashboard
       } else {
         alert(`⚠️ ${data.message}`);
       }

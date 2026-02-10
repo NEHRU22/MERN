@@ -13,16 +13,14 @@ export default function Register() {
     e.preventDefault();
     setLoading(true);
 
-    try {
-      // Change to your local backend URL when running locally
-      const res = await fetch("https://https://mern-backend-pf4m.onrender.com//api/auth/register"
-, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ fullName, email, password }),
-      });
+  try {
+    const res = await fetch('/api/auth/register', {  // FIXED: Local proxy!
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ fullName, email, password }),
+    });
 
       const data = await res.json();
 

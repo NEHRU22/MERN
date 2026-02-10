@@ -13,8 +13,9 @@ export default function Search() {
       setResults([]);
       return;
     }
+
     try {
-      const res = await fetch(`https://https://mern-backend-pf4m.onrender.com//api/search?query=${query}`);
+      const res = await fetch(`/api/realtime-news?category=${query}`);  // FIXED: Use existing news route
       if (!res.ok) {
         const errData = await res.json();
         setMessage(errData.message || "Search failed");
@@ -22,9 +23,10 @@ export default function Search() {
         return;
       }
       const data = await res.json();
-      if (data.results.length === 0) setMessage("No results found for this category");
-      setResults(data.results);
-    } catch {
+      if (data.articles?.length === 0) setMessage("No results found for this category");
+      setResults(data.articles || []);  // NewsAPI returns 'articles'
+    } catch (err) {
+      console.error("Search error:", err);
       setMessage("Search error. Please try again.");
       setResults([]);
     }
@@ -44,12 +46,12 @@ export default function Search() {
       </div>
       <p style={{ color: "red" }}>{message}</p>
       <div className="results-grid">
-        {results.map(({ _id, title, description, imageUrl, category }) => (
-          <div key={_id} className="search-card">
-            <h3>{title}</h3>
-            <p>{description}</p>
-            {imageUrl && <img src={imageUrl} alt={title} />}
-            <p><i>Category: {category}</i></p>
+        {results.map((article, index) => (
+          <div key={index} className="search-card">
+            <h3>{article.title}</h3>
+            <p>{article.description}</p>
+            {article.urlToImage && <img src={article.urlToImage} alt={article.title} />}
+            <p><i>Category: {query}</i></p>
           </div>
         ))}
       </div>
